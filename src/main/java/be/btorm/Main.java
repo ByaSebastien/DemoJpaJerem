@@ -4,6 +4,7 @@ import be.btorm.banques.Banque;
 import be.btorm.banques.InterfaceFonctionelle;
 import be.btorm.entities.Address;
 import be.btorm.entities.GenderType;
+import be.btorm.entities.Municipality;
 import be.btorm.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -18,7 +19,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-//#region jpa
+//#region jpa 1
 //        User user = User.builder()
 //                .firstName("Jerem")
 //                .lastName("Bazin")
@@ -38,26 +39,37 @@ public class Main {
 //        em.getTransaction().commit();
 //#endregion
 
-        InterfaceFonctionelle del = new InterfaceFonctionelle() {
-            @Override
-            public void execute() {
-                System.out.println("Alert");
-            }
-        };
+//#region jpa 1
+        OneToOneDemo demo1 = new OneToOneDemo();
+        demo1.add();
+        Municipality m = demo1.get();
+        System.out.println(m);
 
-        del = () -> alert();
+//#endregion
 
-        Banque b = new Banque(100D);
 
-        b.subscribe(() -> System.out.println("Passage en negatif"));
-        b.subscribe(() -> System.out.println("mon coco"));
-        b.subscribe(() -> System.out.println("les delege c'etait bien"));
-
-        b.setSolde(-50D);
-
+//#region Interface fonctionnelle
+//        InterfaceFonctionelle del = new InterfaceFonctionelle() {
+//            @Override
+//            public void execute() {
+//                System.out.println("Alert");
+//            }
+//        };
+//
+//        del = () -> alert();
+//
+//        Banque b = new Banque(100D);
+//
+//        b.subscribe(() -> System.out.println("Passage en negatif"));
+//        b.subscribe(() -> System.out.println("mon coco"));
+//        b.subscribe(() -> System.out.println("les delege c'etait bien"));
+//
+//        b.setSolde(-50D);
+//#endregion
 
     }
-    public static void alert(){
+
+    public static void alert() {
         System.out.println("Alert");
     }
 }
